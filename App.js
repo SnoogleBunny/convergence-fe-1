@@ -40,7 +40,7 @@ export default function App() {
   }
 
   //grab images asynchronously TODO (Lazy load images so they appear properly.)
-  useLayoutEffect(() => { 
+  useEffect(() => { 
     getImages();
     console.log(images);
     generateImageList = images.map((key, index) => {
@@ -61,7 +61,10 @@ export default function App() {
 
           <View style={styles.imageScrollList}>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-              {generateImageList}
+              <Category imageUri={require ('./assets/profile.png')} name="Hello" />
+              <Category imageUri={require ('./assets/profile.png')} name="Explore" />
+              <Category imageUri={require ('./assets/profile.png')} name="Invent" />
+              <Category imageUri={require ('./assets/profile.png')} name="Lorem Ipsum" />
             </ScrollView>
           </View>
         </View>
