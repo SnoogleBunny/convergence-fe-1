@@ -27,7 +27,7 @@ export default function App() {
 
     if (index === 0) {
       return images;
-    }else {
+    } else {
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
 
@@ -39,7 +39,7 @@ export default function App() {
     return arr; 
   }
 
-  //grab images asynchronously
+  //grab images asynchronously TODO (Lazy load images so they appear properly.)
   useLayoutEffect(() => { 
     getImages();
     console.log(images);
@@ -51,15 +51,15 @@ export default function App() {
     
   return (
     <View style={styles.container}>
-      <Text style={{flex: 1, fontSize: 24, marginTop: 75}}>Convergence Front End Project</Text> 
+      <Text style={styles.containerHeader}>Convergence Front End Project</Text> 
 
       <ScrollView scrollEventThrottle={16}>
-        <View style={{flex: 1, backgroundColor: 'white', paddingTop: 20}}>
-          <Text style={{fontSize: 24, fontWeight: '700', paddingHorizontal: 20}}>
+        <View style={styles.horizontalScrollContainer}>
+          <Text style={styles.horizontalScrollContainerText}>
             Endless photos!
           </Text>
 
-          <View style={{height: 330, marginTop: 10}}>
+          <View style={styles.imageScrollList}>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
               {generateImageList}
             </ScrollView>
@@ -69,7 +69,7 @@ export default function App() {
 
       <Button title="Randomize with magic" onPress={randomizeImagesOrder} />
 
-      <Text style={{paddingHorizontal: 30, textAlign: 'center', paddingBottom: 30, opacity: 0.6}}>Any images you see here are gathered from http://jsonplaceholder.typicode.com/photos. Please refer to this link if you feel that there are missing photos present.</Text>
+      <Text style={styles.footerText}>Any images you see here are gathered from http://jsonplaceholder.typicode.com/photos. Please refer to this link if you feel that there are missing photos present.</Text>
       
       <StatusBar style="auto" />
     </View>
@@ -81,6 +81,31 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
+  containerHeader: {
+    flex: 1, 
+    fontSize: 24, 
+    marginTop: 75
+  },
+  horizontalScrollContainer: {
+    flex: 1, 
+    backgroundColor: 'white', 
+    paddingTop: 20
+  },
+  horizontalScrollContainerText: {
+    fontSize: 24, 
+    fontWeight: '700', 
+    paddingHorizontal: 20
+  },
+  imageScrollList: {
+    height: 330, 
+    marginTop: 10
+  },
+  footerText: {
+    paddingHorizontal: 30, 
+    textAlign: 'center', 
+    paddingBottom: 30, 
+    opacity: 0.6
+  }
 });
