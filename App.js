@@ -26,7 +26,7 @@ export default function App() {
     let currentIndex = images.length, temporaryValue, randomIndex;
 
     if (index === 0) {
-      return images;
+      return arr;
     } else {
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
